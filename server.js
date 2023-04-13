@@ -4,8 +4,10 @@ import bodyParser from 'body-parser';
 import cors from 'cors'
 import userRoute from "./routes/user.js"
 import authRoute from './routes/auth.js'
+import dotenv from 'dotenv'
 
 // Create a new Express application
+dotenv.config();
 const app = express()
 const port = 4000;
 app.use(cors())
