@@ -13,6 +13,11 @@ const authController = {
       const newUser = await new User({
         username: req.body.username,
         firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        address: req.body.address,
+        email: req.body.email,
+        gender: req.body.gender,
+        phone: req.body.phone,
         password: hashed,
       });
       //Save to DB
@@ -62,7 +67,7 @@ const authController = {
       }
       if (user && validPassword) {
         //Generate access token
-        const accessToken = authController.generateAccessToken(user);
+        const access_token = authController.generateAccessToken(user);
         //Generate refresh token
         const refreshToken = authController.generateRefreshToken(user);
 
@@ -74,7 +79,7 @@ const authController = {
           sameSite: "strict",
         });
         const { password, ...others } = user._doc;
-        res.status(200).json({ ...others, accessToken, refreshToken });
+        res.status(200).json({ ...others, access_token, refreshToken });
       }
     } catch (err) {
       res.status(500).json(err);

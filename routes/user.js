@@ -5,6 +5,7 @@ import middlewareController from "../controllers/middlewareController.js";
 const router = express.Router();
 
 router.get("/", userController.getAllUsers);
+router.get("/token",userController.getUser );
 
 //DELETE USER
 router.delete("/:id", userController.deleteUser);
